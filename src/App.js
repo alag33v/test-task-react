@@ -1,3 +1,4 @@
+import { BrowserRouter } from 'react-router-dom';
 import Logo from './components/Logo';
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';
@@ -6,13 +7,15 @@ import { Container, Row } from 'react-bootstrap';
 
 function App() {
   return (
-    <Container>
-      <Logo />
-      <Row>
-        <Sidebar />
-        <Main />
-      </Row>
-    </Container>
+    <BrowserRouter>
+      <Container>
+        <Logo />
+        <Row>
+          <Sidebar />
+          <Main />
+        </Row>
+      </Container>
+    </BrowserRouter>
   );
 }
 

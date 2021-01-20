@@ -1,45 +1,74 @@
-import airlines from '../assets/images/airlines.PNG';
 import { Card } from 'react-bootstrap';
 import styled from 'styled-components';
 
-const Ticket = () => {
+const Ticket = ({ ticket }) => {
   return (
     <StyledTicket>
       <Card>
         <Card.Body>
-          <div className='card__title'>
-            <strong className='cost'>13 400P</strong>
-            <img src={airlines} alt='' />
+          <div className='card-title'>
+            <strong className='cost'>
+              {ticket.price
+                .toString()
+                .split('')
+                .reverse()
+                .reduce((accum, item, i) => {
+                  if (i % 3 === 0) {
+                    return item + ' ' + accum;
+                  }
+                  return item + accum;
+                }, 'P ')
+                .split('')
+                .join('')}
+            </strong>
+            <img src={`//pics.avs.io/99/36/${ticket.carrier}.png`} alt='' />
           </div>
           <div className='wrapper'>
-            <div className='forward'>
-              <div>
-                <span className='up'>MOW - HKR</span>
-                <span className='bottom'>10:45 - 08:00</span>
+            {ticket.segments.map((segment, index) => (
+              <div className='ticket-info' key={index}>
+                <div>
+                  <span className='up'>{`${segment.destination} - ${segment.origin}`}</span>
+                  <span className='bottom'>
+                    {new Date(segment.date).getHours() +
+                      ':' +
+                      new Date(segment.date).getMinutes() +
+                      ' - ' +
+                      new Date(
+                        new Date(segment.date).setHours(
+                          new Date(segment.date).getHours() +
+                            Math.ceil(segment.duration / 60)
+                        )
+                      ).getHours() +
+                      ':' +
+                      new Date(
+                        new Date(segment.date).setMinutes(
+                          new Date(segment.date).getMinutes() + segment.duration
+                        )
+                      ).getMinutes()}
+                  </span>
+                </div>
+                <div>
+                  <span className='up'>В пути</span>
+                  <span className='bottom'>
+                    {Math.ceil(segment.duration / 60) +
+                      ':' +
+                      (segment.duration % 60)}
+                  </span>
+                </div>
+                <div>
+                  <span className='up'>
+                    {segment.stops.length === 0
+                      ? 'Без пересадок'
+                      : segment.stops.length === 1
+                      ? '1 пересадка'
+                      : segment.stops.length >= 2
+                      ? `${segment.stops.length} пересадки`
+                      : ''}
+                  </span>
+                  <span className='bottom'>{segment.stops.join(', ')}</span>
+                </div>
               </div>
-              <div>
-                <span className='up'>В пути</span>
-                <span className='bottom'>21ч 15мин</span>
-              </div>
-              <div>
-                <span className='up'>2 пересадки</span>
-                <span className='bottom'>HKG, JNB</span>
-              </div>
-            </div>
-            <div className='backward'>
-              <div>
-                <span className='up'>MOW - HKR</span>
-                <span className='bottom'>11:20 - 00:50</span>
-              </div>
-              <div>
-                <span className='up'>В пути</span>
-                <span className='bottom'>13ч 30мин</span>
-              </div>
-              <div>
-                <span className='up'> 2 пересадки</span>
-                <span className='bottom'>HKG</span>
-              </div>
-            </div>
+            ))}
           </div>
         </Card.Body>
       </Card>
@@ -55,7 +84,7 @@ const StyledTicket = styled.div`
     margin: 20px 0;
     padding: 0 15px;
   }
-  .card__title {
+  .card-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,15 +95,16 @@ const StyledTicket = styled.div`
   }
   img {
     display: block;
-    width: 180px;
     max-width: 100%;
     object-fit: cover;
   }
   .wrapper {
-    margin-right: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
   }
-  .forward,
-  .backward {
+  .ticket-info {
     display: flex;
     justify-content: space-between;
     margin: 15px 0;
@@ -92,9 +122,6 @@ const StyledTicket = styled.div`
     .card-body {
       padding: 0;
     }
-    .wrapper {
-      margin: 0;
-    }
   }
   @media (max-width: 400px) {
     .cost {
@@ -103,8 +130,7 @@ const StyledTicket = styled.div`
     img {
       width: 140px;
     }
-    .up,
-    .bottom {
+    .ticket-info {
       font-size: 14px;
     }
   }

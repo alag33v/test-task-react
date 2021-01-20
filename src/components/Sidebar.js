@@ -1,7 +1,10 @@
+import { useHistory } from 'react-router-dom';
 import check from '../assets/images/check.svg';
 import styled from 'styled-components';
 
 const Sidebar = () => {
+  const history = useHistory();
+
   return (
     <StyledSidebar>
       <h4>Количество пересадок</h4>
@@ -10,7 +13,7 @@ const Sidebar = () => {
         <span className='check-style'></span>
         <strong>Все</strong>
       </label>
-      <label>
+      <label onClick={() => history.push('/home')}>
         <input className='checkbox' type='checkbox' />
         <span className='check-style'></span>
         <strong>Без пересадок</strong>
@@ -52,6 +55,10 @@ const StyledSidebar = styled.div`
   }
   strong {
     font-weight: 400;
+  }
+  a {
+    text-decoration: none;
+    color: #212529;
   }
   .checkbox {
     position: absolute;
