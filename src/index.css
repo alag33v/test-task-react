@@ -12,6 +12,7 @@ body {
   line-height: 1.5;
   margin-top: 25px;
   background-color: #F3F7FA;
+  min-height: 100vh;
 }
 
 
