@@ -1,8 +1,4 @@
-## Test task on ReactJS + Redux
-
-[Open project](https://alag33v.github.io/test-task-react/)
-
-## Getting Started with Create React App
+# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

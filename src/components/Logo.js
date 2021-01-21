@@ -1,5 +1,5 @@
 import logo from '../assets/images/logo.PNG';
-import styled from 'styled-components';
+import { StyledLogo } from '../styled/Logo';
 
 const Logo = () => {
   return (
@@ -8,14 +8,5 @@ const Logo = () => {
     </StyledLogo>
   );
 };
-
-const StyledLogo = styled.div`
-  text-align: center;
-  img {
-    display: inline-block;
-    margin: 30px auto;
-    cursor: pointer;
-  }
-`;
 
 export default Logo;

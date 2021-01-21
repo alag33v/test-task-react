@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import Choice from './Choice';
-import Ticket from './Ticket';
-import styled from 'styled-components';
+import { Choice } from './index';
+import { Ticket } from './index';
+import { StyledMain } from '../styled/Main';
 
 const Main = ({ filter }) => {
   // Here we store id from API
@@ -10,8 +10,9 @@ const Main = ({ filter }) => {
   const [tickets, setTickets] = useState([]);
   // Checking the response from the server, if true we stop
   const [stop, setStop] = useState(false);
-  // Here we sort the tickets
+  // Here we sort 5 tickets
   const [sortTickets, setSortTickets] = useState([]);
+  // Sort tickets depending on the conditions
   const [sorterActive, setSorterActive] = useState({
     lowprice: true,
     faster: false
@@ -37,6 +38,7 @@ const Main = ({ filter }) => {
     [sorterActive]
   );
 
+  // Sort according to the selected checkbox
   const filterTickets = useCallback(
     ticketArr => {
       if (
@@ -80,7 +82,7 @@ const Main = ({ filter }) => {
 
   useEffect(() => {
     if (stop === true) {
-      // Leave only five tickets
+      // Leave only five tickets and we sort depending on conditions
       setSortTickets(allSorter(filterTickets(tickets)).slice(0, 5));
     }
   }, [stop, tickets, sorterActive, allSorter, filterTickets]);
@@ -116,6 +118,7 @@ const Main = ({ filter }) => {
           if (ticketsBundle.stop) {
             setStop(true);
           }
+          // We collect all tickets in a bunch
           setTickets([...tickets, ...ticketsBundle.tickets]);
         }
       }
@@ -132,19 +135,5 @@ const Main = ({ filter }) => {
     </StyledMain>
   );
 };
-
-const StyledMain = styled.div`
-  width: 73%;
-  margin-left: 2%;
-  @media (max-width: 767px) {
-    width: 100%;
-    margin-left: 0;
-  }
-  @media (max-width: 600px) {
-    width: 95%;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-`;
 
 export default Main;

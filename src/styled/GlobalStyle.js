@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 *,
@@ -15,9 +18,11 @@ body {
   min-height: 100vh;
 }
 
-
 @media (max-width: 767px) {
   .row {
     flex-direction: column;
   }
 }
+`;
+
+export default GlobalStyle;

@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Logo from './components/Logo';
-import Sidebar from './components/Sidebar';
-import Main from './components/Main';
+import { Logo } from './components/index';
+import { Sidebar } from './components/index';
+import { Main } from './components/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'react-bootstrap';
 
-function App() {
+const App = () => {
+  // All checkboxes status
   const [filter, setFilter] = useState({
     all: true,
     without: true,
@@ -26,6 +27,6 @@ function App() {
       </Container>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

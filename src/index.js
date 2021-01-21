@@ -4,7 +4,7 @@ import { compose, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { rootReducer } from './redux/rootReducer';
 import App from './App';
-import './index.css';
+import GlobalStyle from './styled/GlobalStyle';
 import reportWebVitals from './reportWebVitals';
 
 const store = createStore(
@@ -17,6 +17,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
+      <GlobalStyle />
       <App />
     </React.StrictMode>
   </Provider>,
