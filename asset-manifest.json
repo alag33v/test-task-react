@@ -1,28 +1,24 @@
 {
   "files": {
-    "main.css": "/test-task-react/static/css/main.87238cd9.chunk.css",
-    "main.js": "/test-task-react/static/js/main.b8c1d3d0.chunk.js",
-    "main.js.map": "/test-task-react/static/js/main.b8c1d3d0.chunk.js.map",
-    "runtime-main.js": "/test-task-react/static/js/runtime-main.dedfe265.js",
-    "runtime-main.js.map": "/test-task-react/static/js/runtime-main.dedfe265.js.map",
+    "main.js": "/test-task-react/static/js/main.55f800be.chunk.js",
+    "main.js.map": "/test-task-react/static/js/main.55f800be.chunk.js.map",
+    "runtime-main.js": "/test-task-react/static/js/runtime-main.0a2d9bb9.js",
+    "runtime-main.js.map": "/test-task-react/static/js/runtime-main.0a2d9bb9.js.map",
     "static/css/2.1a02f21c.chunk.css": "/test-task-react/static/css/2.1a02f21c.chunk.css",
-    "static/js/2.61d01705.chunk.js": "/test-task-react/static/js/2.61d01705.chunk.js",
-    "static/js/2.61d01705.chunk.js.map": "/test-task-react/static/js/2.61d01705.chunk.js.map",
-    "static/js/3.842895ba.chunk.js": "/test-task-react/static/js/3.842895ba.chunk.js",
-    "static/js/3.842895ba.chunk.js.map": "/test-task-react/static/js/3.842895ba.chunk.js.map",
+    "static/js/2.9108bcbf.chunk.js": "/test-task-react/static/js/2.9108bcbf.chunk.js",
+    "static/js/2.9108bcbf.chunk.js.map": "/test-task-react/static/js/2.9108bcbf.chunk.js.map",
+    "static/js/3.22c2ed16.chunk.js": "/test-task-react/static/js/3.22c2ed16.chunk.js",
+    "static/js/3.22c2ed16.chunk.js.map": "/test-task-react/static/js/3.22c2ed16.chunk.js.map",
     "index.html": "/test-task-react/index.html",
     "static/css/2.1a02f21c.chunk.css.map": "/test-task-react/static/css/2.1a02f21c.chunk.css.map",
-    "static/css/main.87238cd9.chunk.css.map": "/test-task-react/static/css/main.87238cd9.chunk.css.map",
-    "static/js/2.61d01705.chunk.js.LICENSE.txt": "/test-task-react/static/js/2.61d01705.chunk.js.LICENSE.txt",
-    "static/media/airlines.8053a9ff.PNG": "/test-task-react/static/media/airlines.8053a9ff.PNG",
+    "static/js/2.9108bcbf.chunk.js.LICENSE.txt": "/test-task-react/static/js/2.9108bcbf.chunk.js.LICENSE.txt",
     "static/media/check.09eaa8c6.svg": "/test-task-react/static/media/check.09eaa8c6.svg",
     "static/media/logo.1da79cb6.PNG": "/test-task-react/static/media/logo.1da79cb6.PNG"
   },
   "entrypoints": [
-    "static/js/runtime-main.dedfe265.js",
+    "static/js/runtime-main.0a2d9bb9.js",
     "static/css/2.1a02f21c.chunk.css",
-    "static/js/2.61d01705.chunk.js",
-    "static/css/main.87238cd9.chunk.css",
-    "static/js/main.b8c1d3d0.chunk.js"
+    "static/js/2.9108bcbf.chunk.js",
+    "static/js/main.55f800be.chunk.js"
   ]
 }
