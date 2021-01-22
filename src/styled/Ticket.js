@@ -6,7 +6,10 @@ export const StyledTicket = styled.div`
   .card {
     width: 100%;
     margin: 20px 0;
-    padding: 0 15px;
+    padding: 0 10px;
+  }
+  .card-body {
+    padding-bottom: 10px;
   }
   .card-title {
     display: flex;
@@ -32,6 +35,9 @@ export const StyledTicket = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 15px 0;
+    &__last {
+      width: 110px;
+    }
   }
   .up {
     color: #aebcc3;
@@ -44,15 +50,15 @@ export const StyledTicket = styled.div`
   }
   @media (max-width: 500px) {
     .card-body {
-      padding: 0;
+      padding: 10px 0;
+    }
+    .cost {
+      font-size: 26px;
     }
   }
   @media (max-width: 400px) {
     .cost {
       font-size: 26px;
-    }
-    img {
-      width: 140px;
     }
     .ticket-info {
       font-size: 14px;

@@ -1,5 +1,11 @@
 import { Card } from 'react-bootstrap';
 import { StyledTicket } from '../styled/Ticket';
+import {
+  priceConverter,
+  duration,
+  departureArrivalTime,
+  stopsText
+} from './TicketHelper';
 
 const Ticket = ({ ticket }) => {
   return (
@@ -7,68 +13,60 @@ const Ticket = ({ ticket }) => {
       <Card>
         <Card.Body>
           <div className='card-title'>
-            <strong className='cost'>
-              {ticket.price
-                .toString()
-                .split('')
-                .reverse()
-                .reduce((accum, item, i) => {
-                  if (i % 3 === 0) {
-                    return item + ' ' + accum;
-                  }
-                  return item + accum;
-                }, 'P ')
-                .split('')
-                .join('')}
-            </strong>
+            <strong className='cost'>{priceConverter(ticket.price)}</strong>
             <img src={`//pics.avs.io/99/36/${ticket.carrier}.png`} alt='' />
           </div>
           <div className='wrapper'>
-            {ticket.segments.map((segment, index) => (
-              <div className='ticket-info' key={index}>
-                <div>
-                  <span className='up'>{`${segment.destination} - ${segment.origin}`}</span>
-                  <span className='bottom'>
-                    {new Date(segment.date).getHours() +
-                      ':' +
-                      new Date(segment.date).getMinutes() +
-                      ' - ' +
-                      new Date(
-                        new Date(segment.date).setHours(
-                          new Date(segment.date).getHours() +
-                            Math.ceil(segment.duration / 60)
-                        )
-                      ).getHours() +
-                      ':' +
-                      new Date(
-                        new Date(segment.date).setMinutes(
-                          new Date(segment.date).getMinutes() + segment.duration
-                        )
-                      ).getMinutes()}
-                  </span>
-                </div>
-                <div>
-                  <span className='up'>В пути</span>
-                  <span className='bottom'>
-                    {Math.ceil(segment.duration / 60) +
-                      ':' +
-                      (segment.duration % 60)}
-                  </span>
-                </div>
-                <div>
-                  <span className='up'>
-                    {segment.stops.length === 0
-                      ? 'Без пересадок'
-                      : segment.stops.length === 1
-                      ? '1 пересадка'
-                      : segment.stops.length >= 2
-                      ? `${segment.stops.length} пересадки`
-                      : ''}
-                  </span>
-                  <span className='bottom'>{segment.stops.join(', ')}</span>
-                </div>
+            <div className='ticket-info'>
+              <div>
+                <span className='up'>{`${ticket.segments[0].origin} - ${ticket.segments[0].destination}`}</span>
+                <span className='bottom'>
+                  {departureArrivalTime(
+                    ticket.segments[0].date,
+                    ticket.segments[0].duration
+                  )}
+                </span>
               </div>
-            ))}
+              <div>
+                <span className='up'>В пути</span>
+                <span className='bottom'>
+                  {duration(ticket.segments[0].duration)}
+                </span>
+              </div>
+              <div className='ticket-info__last'>
+                <span className='up'>
+                  {stopsText(ticket.segments[0].stops)}
+                </span>
+                <span className='bottom'>
+                  {[...ticket.segments[0].stops].join(', ')}
+                </span>
+              </div>
+            </div>
+            <div className='ticket-info'>
+              <div>
+                <span className='up'>{`${ticket.segments[1].origin} - ${ticket.segments[1].destination}`}</span>
+                <span className='bottom'>
+                  {departureArrivalTime(
+                    ticket.segments[1].date,
+                    ticket.segments[1].duration
+                  )}
+                </span>
+              </div>
+              <div>
+                <span className='up'>В пути</span>
+                <span className='bottom'>
+                  {duration(ticket.segments[1].duration)}
+                </span>
+              </div>
+              <div className='ticket-info__last'>
+                <span className='up'>
+                  {stopsText(ticket.segments[1].stops)}
+                </span>
+                <span className='bottom'>
+                  {[...ticket.segments[1].stops].join(', ')}
+                </span>
+              </div>
+            </div>
           </div>
         </Card.Body>
       </Card>

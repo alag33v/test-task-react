@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { Logo } from './components/index';
 import { Sidebar } from './components/index';
 import { Main } from './components/index';
@@ -17,15 +16,13 @@ const App = () => {
   });
 
   return (
-    <BrowserRouter>
-      <Container>
-        <Logo />
-        <Row>
-          <Sidebar filter={filter} setFilter={setFilter} />
-          <Main filter={filter} setFilter={setFilter} />
-        </Row>
-      </Container>
-    </BrowserRouter>
+    <Container>
+      <Logo />
+      <Row>
+        <Sidebar filter={filter} setFilter={setFilter} />
+        <Main filter={filter} setFilter={setFilter} />
+      </Row>
+    </Container>
   );
 };
 
